@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced Bootstrap Dashboard</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+    <style>
+        body {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #f8fafc 0%, #e0e7ff 100%);
+        }
+        
+        .sidebar {
+            min-height: 100vh;
+            background: #312e81;
+            color: #fff;
+        }
+        
+        .sidebar .nav-link {
+            color: #a5b4fc;
+        }
+        
+        .sidebar .nav-link.active,
+        .sidebar .nav-link:hover {
+            color: #fff;
+            background: #4338ca;
+        }
+        
+        .profile-avatar {
+            width: 60px;
+            height: 60px;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 3px solid #818cf8;
+        }
+        
+        .card {
+            border-radius: 1rem;
+        }
+        
+        .table thead th {
+            vertical-align: middle;
+        }
+        
+        .action-btns .btn {
+            margin-right: 0.25rem;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <!-- Sidebar -->
+            <nav class="col-md-2 d-none d-md-block sidebar py-4">
+                <div class="text-center mb-4">
+                    <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Profile" class="profile-avatar mb-2">
+                    <h5 class="mb-0">Shivam S.</h5>
+                    <small>Admin</small>
+                </div>
+                <ul class="nav flex-column">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#">Dashboard</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Users</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Settings</a>
+                    </li>
+                </ul>
+            </nav>
+
+            <!-- Main Content -->
+            <main class="col-md-10 ms-sm-auto px-md-5 py-4">
+                <!-- Navbar -->
+                <nav class="navbar navbar-expand-lg navbar-light bg-white rounded shadow-sm mb-4">
+                    <div class="container-fluid">
+                        <a class="navbar-brand fw-bold text-primary" href="#">Bootstrap Dashboard</a>
+                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                    </div>
+                </nav>
+
+                <!-- Search Bar -->
+                <div class="row mb-3">
+                    <div class="col-md-6">
+                        <input type="text" id="searchInput" class="form-control" placeholder="Search users...">
+                    </div>
+                    <div class="col-md-6 text-end">
+                        <button class="btn btn-primary">Add User</button>
+                    </div>
+                </div>
+
+                <!-- Table -->
+                <div class="card shadow-sm">
+                    <div class="card-body">
+                        <h5 class="card-title mb-3">User List</h5>
+                        <div class="table-responsive">
+                            <table class="table table-striped table-hover align-middle" id="userTable">
+                                <thead class="table-primary">
+                                    <tr>
+                                        <th scope="col">#</th>
+                                        <th scope="col">First</th>
+                                        <th scope="col">Last</th>
+                                        <th scope="col">Handle</th>
+                                        <th scope="col">Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <th scope="row">1</th>
+                                        <td>Mark</td>
+                                        <td>Otto</td>
+                                        <td>@mdo</td>
+                                        <td class="action-btns">
+                                            <button class="btn btn-sm btn-outline-primary">Edit</button>
+                                            <button class="btn btn-sm btn-outline-danger">Delete</button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">2</th>
+                                        <td>Jacob</td>
+                                        <td>Thornton</td>
+                                        <td>@fat</td>
+                                        <td class="action-btns">
+                                            <button class="btn btn-sm btn-outline-primary">Edit</button>
+                                            <button class="btn btn-sm btn-outline-danger">Delete</button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">3</th>
+                                        <td>John</td>
+                                        <td>Doe</td>
+                                        <td>@social</td>
+                                        <td class="action-btns">
+                                            <button class="btn btn-sm btn-outline-primary">Edit</button>
+                                            <button class="btn btn-sm btn-outline-danger">Delete</button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Footer -->
+                <footer class="text-center text-secondary py-4 mt-5">
+                    &copy; 2024 Bootstrap Advanced Dashboard
+                </footer>
+            </main>
+        </div>
+    </div>
+
+    <!-- Table Search Script -->
+    <script>
+        document.getElementById('searchInput').addEventListener('keyup', function() {
+            var value = this.value.toLowerCase();
+            var rows = document.querySelectorAll('#userTable tbody tr');
+            rows.forEach(function(row) {
+                var text = row.textContent.toLowerCase();
+                row.style.display = text.indexOf(value) > -1 ? '' : 'none';
+            });
+        });
+    </script>
+</body>
+
+</html>
